@@ -2,7 +2,9 @@
 #define SNAKE_H
 
 #include <vector>
+#include <string>
 #include "SDL.h"
+#include "helper.h"
 
 class Snake {
  public:
@@ -12,7 +14,9 @@ class Snake {
       : grid_width(grid_width),
         grid_height(grid_height),
         head_x(grid_width / 2),
-        head_y(grid_height / 2) {}
+        head_y(grid_height / 2) {
+        _bounded = readParameter<bool>("Bounded");
+  }
 
   void Update();
 
@@ -35,6 +39,7 @@ class Snake {
   bool growing{false};
   int grid_width;
   int grid_height;
+  bool _bounded;
 };
 
 #endif

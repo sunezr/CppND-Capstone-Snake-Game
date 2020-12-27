@@ -1,6 +1,5 @@
 #include "snake.h"
 #include <cmath>
-#include <iostream>
 
 void Snake::Update() {
   SDL_Point prev_cell{
@@ -38,9 +37,14 @@ void Snake::UpdateHead() {
       break;
   }
 
-  // Wrap the Snake around to the beginning if going off of the screen.
-  head_x = fmod(head_x + grid_width, grid_width);
-  head_y = fmod(head_y + grid_height, grid_height);
+  if (_bounded) {
+      if (head_x < 0 || head_x >= grid_width - 1) { alive = false; }
+      if (head_y < 0 || head_y >= grid_height - 1) { alive = false; }
+  } else {
+      // Wrap the Snake around to the beginning if going off of the screen.
+      head_x = fmod(head_x + grid_width, grid_width);
+      head_y = fmod(head_y + grid_height, grid_height);
+  }
 }
 
 void Snake::UpdateBody(SDL_Point &current_head_cell, SDL_Point &prev_head_cell) {
