@@ -6,12 +6,12 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width)),
-      random_h(0, static_cast<int>(grid_height)) {
-  _level = readParameter<int>("Level");
-  PlaceFood();
+      random_h(0, static_cast<int>(grid_height)),
+      _level(readParameter<int>("Level")) {
+    PlaceFood();
 }
 
-void Game::Run(Controller const &controller, Renderer &renderer,
+void Game::Run(Controller &controller, Renderer &renderer,
                std::size_t target_frame_duration) {
   Uint32 title_timestamp = SDL_GetTicks();
   Uint32 frame_start;
@@ -25,7 +25,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
 
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
-    Update();
+    Update(controller);
     renderer.Render(snake, food);
 
     frame_end = SDL_GetTicks();
@@ -66,7 +66,9 @@ void Game::PlaceFood() {
   }
 }
 
-void Game::Update() {
+void Game::Update(const Controller &controller) {
+  if (controller.GetStatus())
+    return;
   if (!snake.alive) return;
 
   snake.Update();
