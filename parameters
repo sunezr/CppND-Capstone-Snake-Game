@@ -1,0 +1,5 @@
+// (bool Bounded, 0 or 1) whether it is bounded in four direction
+Bounded: 1
+
+// (int Level, nonnegative, 0-3 is recommended) update ratio of speed: speed += Level * increment
+Level: 3
