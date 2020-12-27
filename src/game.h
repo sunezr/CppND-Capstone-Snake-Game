@@ -18,6 +18,7 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
+  int _level;  // level represent the update ratio of speed, which is read from parameters
 
   std::random_device dev;
   std::mt19937 engine;

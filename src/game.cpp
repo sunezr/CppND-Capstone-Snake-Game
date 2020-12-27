@@ -1,12 +1,13 @@
 #include "game.h"
-#include <iostream>
 #include "SDL.h"
+#include "helper.h"
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width)),
       random_h(0, static_cast<int>(grid_height)) {
+  _level = readParameter<int>("Level");
   PlaceFood();
 }
 
@@ -79,7 +80,7 @@ void Game::Update() {
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
-    snake.speed += 0.02;
+    snake.speed += _level * 0.01;
   }
 }
 
