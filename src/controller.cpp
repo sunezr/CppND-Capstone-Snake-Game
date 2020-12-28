@@ -10,7 +10,16 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
 
 void Controller::ChangePauseState() { _pause = !_pause; }
 
-bool Controller::GetPauseState() const { return _pause;}
+bool Controller::GetPauseState() const { return _pause; }
+
+void Controller::SetRestartState(bool &running, bool alive) {
+  if (_pause || !alive) {
+    _restart = true;
+    running = false;
+  }
+}
+
+bool Controller::GetRestartState() const {return _restart; }
 
 void Controller::HandleInput(bool &running, Snake &snake) {
   SDL_Event e;
@@ -39,7 +48,12 @@ void Controller::HandleInput(bool &running, Snake &snake) {
                           Snake::Direction::kLeft);
           break;
 
-        case SDLK_p:ChangePauseState();
+        case SDLK_p:
+          ChangePauseState();
+          break;
+
+        case SDLK_r:
+          SetRestartState(running, snake.alive);
           break;
       }
     }
