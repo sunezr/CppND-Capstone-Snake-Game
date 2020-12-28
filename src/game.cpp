@@ -67,7 +67,7 @@ void Game::PlaceFood() {
 }
 
 void Game::Update(const Controller &controller) {
-  if (controller.GetStatus())
+  if (controller.GetPauseState())
     return;
   if (!snake.alive) return;
 

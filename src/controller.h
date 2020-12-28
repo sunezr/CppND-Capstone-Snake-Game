@@ -7,8 +7,8 @@ class Controller {
  public:
   Controller(): _pause(false) {}
   void HandleInput(bool &running, Snake &snake);
-  void ChangeStatus();
-  bool GetStatus() const;
+  void ChangePauseState();
+  bool GetPauseState() const;
 
  private:
   bool _pause;

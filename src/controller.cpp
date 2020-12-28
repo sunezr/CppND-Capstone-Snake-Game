@@ -8,9 +8,9 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
   return;
 }
 
-void Controller::ChangeStatus() { _pause = !_pause; }
+void Controller::ChangePauseState() { _pause = !_pause; }
 
-bool Controller::GetStatus() const { return _pause;}
+bool Controller::GetPauseState() const { return _pause;}
 
 void Controller::HandleInput(bool &running, Snake &snake) {
   SDL_Event e;
@@ -39,8 +39,7 @@ void Controller::HandleInput(bool &running, Snake &snake) {
                           Snake::Direction::kLeft);
           break;
 
-        case SDLK_p:
-          ChangeStatus();
+        case SDLK_p:ChangePauseState();
           break;
       }
     }
