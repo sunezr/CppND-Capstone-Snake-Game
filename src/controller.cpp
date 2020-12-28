@@ -8,9 +8,9 @@ void Controller::ChangeDirection(Snake &snake, Snake::Direction input,
   return;
 }
 
-void Controller::ChangeStatus() { _changeStatus = !_changeStatus; }
+void Controller::ChangeStatus() { _pause = !_pause; }
 
-bool Controller::GetStatus() const { return _changeStatus;}
+bool Controller::GetStatus() const { return _pause;}
 
 void Controller::HandleInput(bool &running, Snake &snake) {
   SDL_Event e;
