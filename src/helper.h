@@ -7,6 +7,7 @@
 #include <sstream>
 #include <cassert>
 
+// read parameter from parameters file
 template<typename T>
 T readParameter(std::string parameterName) {
     std::string filePath = "../parameters";

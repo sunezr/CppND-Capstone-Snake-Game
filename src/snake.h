@@ -17,6 +17,7 @@ class Snake {
         head_y(grid_height / 2),
         _bounded(readParameter<bool>("Bounded")) {}
 
+  // update the attribute of snake
   void Update();
 
   void GrowBody();
