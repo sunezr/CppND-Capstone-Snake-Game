@@ -39,7 +39,7 @@ Here are new features are add to this project.
   -  `Bounded` decides whether there are walls at boundary. If there is a wall, then snake will die when crossing. 
   -  `Level` decides the update rate of speed at each time the snake eats the food.
 - The game can be paused and resumed both by keyboard P.
-- The game can be restart when it is paused or snake is not alive.
+- The game can be restart by keyboard R when it is paused or snake is not alive.
 - The `WindowTitle` is modified to show the usage of keyboard and more output is add to show the game status.
 
 ## Rubric Points
