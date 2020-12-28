@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 #include "SDL.h"
 #include "helper.h"
 
@@ -15,7 +16,9 @@ class Snake {
         grid_height(grid_height),
         head_x(grid_width / 2),
         head_y(grid_height / 2),
-        _bounded(readParameter<bool>("Bounded")) {}
+        _bounded(readParameter<bool>("Bounded")) {
+    std::cout << (_bounded ? "There are walls at boundary\n" : "There are not walls at boundary\n");
+  }
 
   // update the attribute of snake
   void Update();

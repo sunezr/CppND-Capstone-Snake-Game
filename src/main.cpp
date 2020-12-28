@@ -21,6 +21,8 @@ int main() {
     std::cout << "Score: " << game.GetScore() << "\n";
     std::cout << "Size: " << game.GetSize() << "\n";
     if (!controller.GetRestartState()) break;
+    std::cout << "---------------------------------\n";
+    std::cout << "Game has restarted successfully\n";
   }
   return 0;
 }

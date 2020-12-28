@@ -8,6 +8,7 @@ Game::Game(std::size_t grid_width, std::size_t grid_height)
       random_w(0, static_cast<int>(grid_width)),
       random_h(0, static_cast<int>(grid_height)),
       _level(readParameter<int>("Level")) {
+    std::cout << "Game Level: " << std::to_string(_level) << "\n";
     PlaceFood();
 }
 
